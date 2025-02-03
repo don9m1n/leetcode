@@ -1,26 +1,17 @@
-import java.math.BigInteger;
-import java.util.Stack;
-
 class Solution {
     public int[] plusOne(int[] digits) {
-        BigInteger num = BigInteger.ZERO;
-        for (int digit : digits) {
-            num = num.multiply(BigInteger.TEN).add(BigInteger.valueOf(digit));
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+
+            digits[i] = 0;
         }
 
-        num = num.add(BigInteger.ONE);
+        digits = new int[digits.length + 1];
+        digits[0] = 1;
 
-        Stack<BigInteger> stack = new Stack<>();
-        while (num.compareTo(BigInteger.ZERO) > 0) {
-            stack.push(num.mod(BigInteger.TEN));
-            num = num.divide(BigInteger.TEN);
-        }
-
-        int[] answer = new int[stack.size()];
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = stack.pop().intValue();
-        }
-
-        return answer;
+        return digits;
     }
 }

@@ -1,15 +1,13 @@
 class Solution {
     public String gcdOfStrings(String str1, String str2) {
-         String answer = "";
-
-        for (int i = 0; i < str1.length(); i++) {
-            String prefix =  str1.substring(0, i + 1);
-
-            if (str1.replace(prefix, "").isEmpty() && str2.replace(prefix, "").isEmpty()) {
-                answer = prefix;
-            }
+         if (!str1.concat(str2).equals(str2.concat(str1))) {
+            return "";
         }
 
-        return answer;
+        return str1.substring(0, gcd(str1.length(), str2.length()));
+    }
+
+    private int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 }

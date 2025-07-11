@@ -1,20 +1,14 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
-
-        if (s.isEmpty()) {
-            return true;
-        }
-
         int sp = 0; // s pointer
+        int tp = 0; // t pointer
 
-        for (int tp = 0; tp < t.length(); tp++) {
-            if(sp == s.length()) {
-                return true;
-            }
-            
-            if(t.charAt(tp) == s.charAt(sp)){
+        while(sp < s.length() && tp < t.length()) {
+            if (s.charAt(sp) == t.charAt(tp)) {
                 sp++;
             }
+
+            tp++;
         }
 
         return sp == s.length();

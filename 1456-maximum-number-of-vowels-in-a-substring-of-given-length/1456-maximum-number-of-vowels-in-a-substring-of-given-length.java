@@ -1,37 +1,29 @@
 class Solution {
     public int maxVowels(String s, int k) {
-        Map<Character, Boolean> vowels = new HashMap<>();
-        vowels.put('a', true);
-        vowels.put('e', true);
-        vowels.put('i', true);
-        vowels.put('o', true);
-        vowels.put('u', true);
+         Set<Character> vowels = Set.of('a', 'e', 'i', 'o', 'u');
 
         int start = 0;
         int end = k;
-        int prev = 0;
-        int max = 0;
 
+        int cnt = 0;
         for (int i = 0; i < k; i++) {
-            if(vowels.containsKey(s.charAt(i))){
-                prev++;
-                max++;
+            if(vowels.contains(s.charAt(i))){
+                cnt++;
             }
         }
 
-        while(end < s.length()){
-            int cnt = 0;
+        int max = cnt;
 
-            if (vowels.containsKey(s.charAt(start++))) {
+        while(end < s.length()){
+            if (vowels.contains(s.charAt(start++))) {
                 cnt--;
             }
 
-            if (vowels.containsKey(s.charAt(end++))) {
+            if (vowels.contains(s.charAt(end++))) {
                 cnt++;
             }
 
-            prev += cnt;
-            max = Math.max(max, prev);
+            max = Math.max(max, cnt);
         }
 
         return max;

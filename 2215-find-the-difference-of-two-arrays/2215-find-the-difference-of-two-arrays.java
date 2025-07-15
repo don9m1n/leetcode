@@ -10,10 +10,11 @@ class Solution {
         for (int num : nums2) {
             set2.add(num);
         }
-
+        
         Iterator<Integer> it = set2.iterator();
         while(it.hasNext()){
             int num = it.next();
+            
             if(set1.contains(num)){
                 set1.remove(num);
                 it.remove();

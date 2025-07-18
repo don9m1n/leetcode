@@ -11,9 +11,8 @@ class Solution {
                     word.append(stack.pop());
                 }
 
-                while(!stack.isEmpty() && stack.peek() == '[') {
-                    stack.pop();
-                }
+                // '[' 제거
+                stack.pop();
 
                 StringBuilder num = new StringBuilder();
 
@@ -34,6 +33,7 @@ class Solution {
         }
 
         StringBuilder answer = new StringBuilder();
+        
         while(!stack.isEmpty()){
             answer.append(stack.pop());
         }

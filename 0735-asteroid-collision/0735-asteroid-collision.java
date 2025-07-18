@@ -3,26 +3,24 @@ class Solution {
         Stack<Integer> stack = new Stack<>();
 
         for (int current : asteroids) {
-            boolean flag = true;
+            boolean alive = true;
 
-            if (current < 0) {
-                while (!stack.isEmpty() && stack.peek() > 0) {
-                    int top = stack.peek();
+            while (!stack.isEmpty() && stack.peek() > 0 && current < 0) {
+                int top = stack.peek();
 
-                    if (top < -current) {
-                        stack.pop();
-                    } else if (top == -current) {
-                        stack.pop();
-                        flag = false;
-                        break;
-                    } else {
-                        flag = false;
-                        break;
-                    }
+                if (top < -current) {
+                    stack.pop();
+                } else if (top == -current) {
+                    stack.pop();
+                    alive = false;
+                    break;
+                } else {
+                    alive = false;
+                    break;
                 }
             }
 
-            if (flag) {
+            if (alive) {
                 stack.push(current);
             }
         }

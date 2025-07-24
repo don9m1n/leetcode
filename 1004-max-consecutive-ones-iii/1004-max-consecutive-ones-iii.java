@@ -20,6 +20,7 @@ class Solution {
                 cnt--;
             }
 
+            // cnt <= k 일때 길이 갱신
             max = Math.max(max, r - l + 1);
             r++;
         }
